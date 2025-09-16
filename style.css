@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* MARK: Dark Mode
+*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #2196F3;
+}
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+.dark-mode a {
+    color: white;
+}
+.light-mode {
+    background-color: #fff;
+}
+
+
+/* MARK: Header
+*/
+header {
+    margin: 2rem 0;
+}
+header h1 {
+    text-align: center;
+}
+
+
+/* MARK: General
+*/
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+i {
+    color: rgb(253, 195, 87);
+}
+
+/* MARK: Now Showing
+*/
+.nowShowing {
+    padding: 2rem 0;
+}
+.nowShowing .movieWrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    height: fit-content;
+    width: 100%;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.nowShowing .movie {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+    width: 40%;
+    height: 100%;
+    &:first-of-type {
+        margin-left: 2rem;
+    }
+    &:last-of-type {
+        margin-right: 2rem;
+    }
+}
+.nowShowing .movie img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* MARK: Popular
+*/
+.popular {
+    margin-top: 2rem;
+    /* padding: 0 2rem; */
+}
+.popular .movieWrapper {
+    padding: 0 2rem;
+}
+.popular .movie {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.popular img {
+    width: 100px;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}

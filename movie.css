@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* MARK: Dark Mode
+*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #2196F3;
+}
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+.dark-mode a {
+    color: white;
+}
+.light-mode {
+    background-color: #fff;
+}
+
+
+/* MARK: Header
+*/
+header  {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    padding: 2rem;
+}
+header .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+header .trailer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-self: center;
+}
+
+/* MARK: Container
+*/
+#container {
+    margin-top: -.5rem;
+    padding: 2rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 100vh;
+}
+.movieDetails i {
+    color: rgb(253, 195, 87);
+}
