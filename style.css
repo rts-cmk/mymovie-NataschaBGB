@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Merriweather", serif;
 }
 
 /* MARK: Dark Mode
@@ -25,7 +27,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #000000;
     transition: .4s;
     border-radius: 34px;
 }
@@ -36,21 +38,22 @@
     width: 20px;
     left: 2px;
     bottom: 2px;
-    background-color: white;
+    background-color: rgb(126, 126, 126);
     transition: .4s;
     border-radius: 50%;
 }
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #ffffff;
 }
 input:checked + .slider:before {
     transform: translateX(20px);
 }
+
+
+/* MARK: Light/Dark
+*/
 .dark-mode {
     background-color: black;
-    color: white;
-}
-.dark-mode a {
     color: white;
 }
 .light-mode {
@@ -60,37 +63,76 @@ input:checked + .slider:before {
 
 /* MARK: Header
 */
-header {
+.light-mode header,
+.dark-mode header {
     margin: 2rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
 }
-header h1 {
+.light-mode header h1,
+.dark-mode header h1 {
+    grid-column: 2 / 3;
     text-align: center;
+}
+.light-mode header .switch,
+.dark-mode header .switch {
+    grid-column: 3/ 4;
+    margin-right: 20px;
+    justify-self: flex-end;
 }
 
 
 /* MARK: General
 */
-.title {
+.light-mode .title,
+.dark-mode .title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
     padding: 0 2rem;
 }
-a {
+.light-mode .title a,
+.dark-mode .title a {
+    color: #aaa9b1;
+    border: 2px solid #aaa9b1;
+    padding: 5px 10px;
+    border-radius: 25px;
+}
+
+.light-mode figcaption,
+.dark-mode figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.light-mode a {
     text-decoration: none;
     color: black;
 }
-i {
+.dark-mode a {
+    text-decoration: none;
+    color: white;
+}
+.light-mode i,
+.dark-mode i {
     color: rgb(253, 195, 87);
+}
+.light-mode p,
+.dark-mode p {
+    color: #aaa9b1;
+    font-weight: 200;
 }
 
 /* MARK: Now Showing
 */
-.nowShowing {
+.light-mode .nowShowing,
+.dark-mode .nowShowing {
     padding: 2rem 0;
 }
-.nowShowing .movieWrapper {
+.light-mode .nowShowing .movieWrapper,
+.dark-mode .nowShowing .movieWrapper {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -100,7 +142,8 @@ i {
         display: none;
     }
 }
-.nowShowing .movie {
+.light-mode .nowShowing .movie,
+.dark-mode .nowShowing .movie {
     flex: 0 0 auto;
     margin-right: 1rem;
     width: 40%;
@@ -112,30 +155,71 @@ i {
         margin-right: 2rem;
     }
 }
-.nowShowing .movie img {
+.light-mode .nowShowing .movie img,
+.dark-mode .nowShowing .movie img {
     width: 100%;
-    height: 250px;
+    height: 320px;
     object-fit: cover;
     border-radius: 8px;
+    box-shadow: 0px 7px 10px -6px rgba(0,0,0,0.75);
+}
+.light-mode .nowShowing figcaption,
+.dark-mode .nowShowing figcaption {
+    margin-top: 10px;
 }
 
 /* MARK: Popular
 */
-.popular {
+.light-mode .popular,
+.dark-mode .popular {
     margin-top: 2rem;
-    /* padding: 0 2rem; */
 }
-.popular .movieWrapper {
+.light-mode .popular .movieWrapper,
+.dark-mode .popular .movieWrapper {
     padding: 0 2rem;
 }
-.popular .movie {
+.light-mode .popular .movie,
+.dark-mode .popular .movie {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
-.popular img {
-    width: 100px;
+.light-mode .popular img,
+.dark-mode .popular img {
+    width: 130px;
     height: 100%;
     object-fit: contain;
     border-radius: 8px;
+    box-shadow: 0px 0px 11px -1px rgba(0,0,0,0.75);
+}
+.light-mode .popular ul,
+.dark-mode .popular ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.light-mode .popular ul li,
+.dark-mode .popular ul li {
+    padding: 5px 15px;
+    border-radius: 25px;
+    background-color: #dce3ff;
+    color: #8ca4ea;
+    font-size: 14px;
+}
+.light-mode .popular .release_date,
+.dark-mode .popular .release_date {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.dark-mode h1, .dark-mode h2 {
+    color: #dce3ff;
+}
+.dark-mode .nowShowing .movie img {
+    box-shadow: 0px 11px 27px -7px rgba(66,46,23,0.67);
+}
+.dark-mode .popular .movie img {
+    box-shadow: 0px 0px 11px -1px rgba(66,46,23,0.67);
 }
