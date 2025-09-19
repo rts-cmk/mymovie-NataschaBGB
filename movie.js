@@ -94,6 +94,7 @@ function insertHeader(movie) {
 
 
 
+    
     // MARK: TRAILER
     // key to use in youtube link outside this function
     let key;
