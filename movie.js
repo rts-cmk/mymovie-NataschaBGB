@@ -98,37 +98,16 @@ function insertHeader(movie) {
     // key to use in youtube link outside this function
     let key;
     // loop through video results and find where name is equal to "official trailer"
-    officialTrailer = movie.videos.results.find(result => {
-        return result.name.toLowerCase() === "official trailer";
-    });
+    // if no exact match is found - look for name that includes "official trailer"
+    officialTrailer =
+    movie.videos.results.find(r => r.name.toLowerCase() === "official trailer") ||
+    movie.videos.results.find(r => r.name.toLowerCase().includes("official trailer"));
 
-    // if exact match is found
-    if (officialTrailer) {
-        // set key to the name found
-        key = officialTrailer.key;
-        // insert key in youtube link to open this when play button is clicked
-        video = `https://www.youtube.com/watch?v=${key}`;
-    }
-    // if exact match is not found
-    else {
-        // find name that includes "official trailer"
-        officialTrailer = movie.videos.results.find(result => {
-            return result.name.toLowerCase().includes("official trailer");
-        });
-
-        // if name includes "official trailer"
-        if (officialTrailer) {
-            // set key to the found name
-            key = officialTrailer.key;
-            // insert key in youtube link to open this when play button is clicked
-            video = `https://www.youtube.com/watch?v=${key}`;
-        }
-        // if no name includes "official trailer"
-        else {
-            // set video string to empty
-            video = "";
-        }
-    }
+    // set ket to found name
+    key = officialTrailer ? officialTrailer.key : null;
+    // if key is not empty - set video string to youtube link
+    // if key is empty - set video string empty
+    video = key ? `https://www.youtube.com/watch?v=${key}` : "";
 
     // set videoPath and videokey equal to video variable to use outside function
     videoPath = video;
