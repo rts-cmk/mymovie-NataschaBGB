@@ -7,7 +7,7 @@
     font-family: "Merriweather", serif;
 }
 
-/* MARK: Dark Mode
+/* MARK: Light/Dark Switch
 */
 .switch {
     position: relative;
@@ -100,7 +100,6 @@ input:checked + .slider:before {
     padding: 5px 10px;
     border-radius: 25px;
 }
-
 .light-mode figcaption,
 .dark-mode figcaption {
     display: flex;
@@ -145,7 +144,7 @@ input:checked + .slider:before {
 .light-mode .nowShowing .movie,
 .dark-mode .nowShowing .movie {
     flex: 0 0 auto;
-    margin-right: 1rem;
+    margin-right: 2rem;
     width: 40%;
     height: 100%;
     &:first-of-type {
@@ -214,6 +213,8 @@ input:checked + .slider:before {
     font-size: 14px;
 }
 
+/* MARK: Dark
+*/
 .dark-mode h1, .dark-mode h2 {
     color: #dce3ff;
 }
@@ -222,4 +223,292 @@ input:checked + .slider:before {
 }
 .dark-mode .popular .movie img {
     box-shadow: 0px 0px 11px -1px rgba(66,46,23,0.67);
+}
+
+
+
+
+
+
+
+/* -------------------------------------------------------- */
+/* MARK: Media Queries
+*/
+
+
+
+/* MARK: SMALL PHONE
+*/
+@media only screen and (max-width: 420px) {
+
+
+
+    /* MARK: Header
+    */
+    .light-mode header h1,
+    .dark-mode header h1 {
+        font-size: 1.5rem;
+    }
+    .light-mode header .switch,
+    .dark-mode header .switch {
+        margin-right: 1rem;
+    }
+
+    /* MARK: General
+    */
+    .light-mode .title,
+    .dark-mode .title {
+        font-size: .8rem;
+        padding: 0 1rem;
+    }
+    .light-mode figcaption a,
+    .dark-mode figcaption a {
+        font-size: .8rem;
+    }
+    .light-mode figcaption p,
+    .dark-mode figcaption p {
+        font-size: .7rem;
+    }
+
+    /* MARK: Now Showing
+    */
+    .light-mode .nowShowing .movie,
+    .dark-mode .nowShowing .movie {
+        margin-right: 1rem;
+        width: 40%;
+        &:first-of-type {
+            margin-left: 1rem;
+        }
+        &:last-of-type {
+            margin-right: 1rem;
+        }
+    }
+    .light-mode .nowShowing .movie img,
+    .dark-mode .nowShowing .movie img {
+        height: 250px;
+    }
+
+    /* MARK: Popular
+    */
+    .light-mode .popular .movieWrapper,
+    .dark-mode .popular .movieWrapper {
+        padding: 0 1rem;
+    }
+    .light-mode .popular img,
+    .dark-mode .popular img {
+        width: 140px;
+    }
+    .light-mode .popular ul li,
+    .dark-mode .popular ul li,
+    .light-mode .popular .release_date p,
+    .dark-mode .popular .release_date p {
+        font-size: 14px;
+    }
+}
+
+
+
+/* MARK: TABLET / IPAD
+*/
+@media only screen and (min-width: 769px) {
+
+
+
+    /* MARK: Header
+    */
+    .light-mode header h1,
+    .dark-mode header h1 {
+        font-size: 3rem;
+    }
+    .light-mode header .switch,
+    .dark-mode header .switch {
+        margin-right: 2rem;
+    }
+
+    /* MARK: General
+    */
+    .light-mode .title,
+    .dark-mode .title {
+        font-size: 1.5rem;
+        padding: 0 2rem;
+    }
+    .light-mode figcaption a,
+    .dark-mode figcaption a {
+        font-size: 1.3rem;
+    }
+    .light-mode figcaption p,
+    .dark-mode figcaption p {
+        font-size: 1.2rem;
+    }
+
+    /* MARK: Now Showing
+    */
+    .light-mode .nowShowing .movie,
+    .dark-mode .nowShowing .movie {
+        width: 35%;
+        &:first-of-type {
+            margin-left: 2rem;
+        }
+        &:last-of-type {
+            margin-right: 2rem;
+        }
+    }
+    .light-mode .nowShowing .movie img,
+    .dark-mode .nowShowing .movie img {
+        height: 500px;
+    }
+
+    /* MARK: Popular
+    */
+    .light-mode .popular img,
+    .dark-mode .popular img {
+        width: auto;
+        height: 300px;
+    }
+    .light-mode .popular ul li,
+    .dark-mode .popular ul li,
+    .light-mode .popular .release_date p,
+    .dark-mode .popular .release_date p {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+/* MARK: DESKTOP
+*/
+
+
+
+@media only screen and (min-width: 1100px) {
+    /* MARK: General
+    */
+    .light-mode figcaption a,
+    .dark-mode figcaption a {
+        font-size: 1.5rem;
+    }
+
+    /* MARK: Header
+    */
+    .light-mode header,
+    .dark-mode header,
+    .light-mode .popular,
+    .dark-mode .popular {
+        width: 90%;
+        margin: 2rem auto;
+    }
+    .light-mode header .switch,
+    .dark-mode header .switch {
+        margin-right: 0;
+    }
+
+    /* MARK: Now Showing
+    */
+    .light-mode .nowShowing .movieWrapper,
+    .dark-mode .nowShowing .movieWrapper {
+        /* show the scrollbar on desktop */
+        &::-webkit-scrollbar {
+            display: block;
+            height: 20px;
+        }
+        /* style of scrollbar stick */
+        &::-webkit-scrollbar-thumb {
+            background: rgb(0, 0, 0);
+            border-radius: 10px;
+            border: 1px solid rgb(255, 0, 0);
+            box-shadow: inset 0px 0px 13px 0px hsl(0, 100%, 50%);
+        }
+        /* style of scrollbare track */
+        &::-webkit-scrollbar-track {
+            background-color: #fff;
+            border: 1px solid rgb(0, 0, 0);
+            box-shadow: inset 0px 0px 13px 0px #000000;
+            border-radius: 10px;
+        }
+    }
+    .light-mode .nowShowing .movie,
+    .dark-mode .nowShowing .movie {
+        margin-bottom: 1rem;
+    }
+    .light-mode .nowShowing .movie img,
+    .dark-mode .nowShowing .movie img {
+        height: 600px;
+    }
+
+    /* MARK: Popular
+    */
+    .light-mode .popular .title,
+    .dark-mode .popular .title {
+        padding: 0;
+    }
+    .light-mode .popular .movieWrapper,
+    .dark-mode .popular .movieWrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+        padding: 0;
+        &::-webkit-scrollbar {
+            display: block;
+        }
+    }
+    .light-mode .popular img,
+    .dark-mode .popular img {
+        width: 220px;
+        height: auto;
+    }
+}
+
+
+
+
+/* MARK: Large Screen
+*/
+@media only screen and (min-width: 1300px) {
+    /* MARK: General
+    */
+    .light-mode figcaption a,
+    .dark-mode figcaption a {
+        font-size: 1.7rem;
+    }
+    .light-mode .title,
+    .dark-mode .title {
+        font-size: 2rem;
+    }
+
+    /* MARK: Header
+    */
+    .light-mode header h1,
+    .dark-mode header h1 {
+        font-size: 4rem;
+    }
+
+    /* MARK: Now Showing
+    */
+    .light-mode .nowShowing .movie,
+    .dark-mode .nowShowing .movie {
+        width: 30%;
+    }
+    .light-mode .nowShowing .movie img,
+    .dark-mode .nowShowing .movie img {
+        height: 700px;
+    }
+
+    /* MARK: Popular
+    */
+    .light-mode .popular img,
+    .dark-mode .popular img {
+        width: 250px;
+    }
+}
+
+
+@media only screen and (min-width: 1300px) {
+    /* MARK: Now Showing
+    */
+    .light-mode .nowShowing .movie,
+    .dark-mode .nowShowing .movie {
+        width: 25%;
+    }
 }

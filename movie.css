@@ -223,12 +223,13 @@ header .trailer button {
 .dark-mode .cast .actors {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    gap: 5px;
     color: #100d3f;
+    text-align: center;
 }
-.light-mode .cast .actors img,
-.dark-mode .cast .actors img {
-    height: 110px;
+.light-mode .cast .actors .actor img,
+.dark-mode .cast .actors .actor img {
+    height: 120px;
     width: 100%;
     object-fit: cover;
     border-radius: 10px;
@@ -244,4 +245,139 @@ header .trailer button {
 .dark-mode .overview h2,
 .dark-mode .cast .actors {
     color: #dce3ff;
+}
+
+
+
+
+
+
+/* ---------------------------------------------------- */
+/* MARK: Media Queries
+*/
+
+
+
+
+/* MARK: TABLET / IPAD
+*/
+@media only screen and (min-width: 768px) {
+    
+    
+    
+    /* MARK: Header
+    */
+    header  {
+        height: 500px;
+    }
+
+    /* MARK: General Style
+    */
+    .light-mode p, 
+    .dark-mode p {
+        font-size: 20px;
+    }
+    .light-mode h2, 
+    .dark-mode h2 {
+        font-size: 2rem;
+    }
+    .light-mode a, 
+    .dark-mode a {
+        font-size: 1.5rem;
+    }
+
+    /* MARK: Movie
+    */
+    .light-mode .movie h1, 
+    .dark-mode .movie h1 {
+        font-size: 3rem;
+    }
+    .light-mode .movie ul li,
+    .dark-mode .movie ul li {
+        font-size: 20px;
+    }
+
+    /* MARK: Cast
+    */
+    .light-mode .cast .actors,
+    .dark-mode .cast .actors {
+        gap: 20px;
+    }
+    .light-mode .cast .actors .actor img,
+    .dark-mode .cast .actors .actor img {
+        height: 180px;
+    }
+}
+
+
+/* MARK: DESKTOP
+*/
+@media only screen and (min-width: 1024px) {
+    
+    
+    
+    /* MARK: Header
+    */
+    header  {
+        height: 600px;
+    }
+
+    /* MARK: General Style
+    */
+    article {
+        padding: 0 4rem;
+    }
+    .light-mode p, 
+    .dark-mode p {
+        font-size: 24px;
+    }
+    .light-mode h2, 
+    .dark-mode h2 {
+        font-size: 2.5rem;
+    }
+    .light-mode a, 
+    .dark-mode a {
+        font-size: 2rem;
+    }
+
+    /* MARK: Movie
+    */
+    .light-mode .movie h1, 
+    .dark-mode .movie h1 {
+        font-size: 4rem;
+    }
+    .light-mode .movie ul li,
+    .dark-mode .movie ul li {
+        font-size: 24px;
+    }
+
+    /* MARK: Cast
+    */
+    .light-mode .cast .actors .actor img,
+    .dark-mode .cast .actors .actor img {
+        height: 240px;
+    }
+}
+
+
+
+/* MARK: LARGE SCREEN
+*/
+@media only screen and (min-width: 1300px) {
+
+
+    
+    /* MARK: General Style
+    */
+    article {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    /* MARK: Cast
+    */
+    .light-mode .cast .actors .actor img,
+    .dark-mode .cast .actors .actor img {
+        height: 300px;
+    }
 }

@@ -119,7 +119,6 @@ Promise.all([nowPlayingFetch, popularFetch, genresFetch])
 function displayNowShowing(movies) {
 
     const container = document.querySelector("#container")
-    // console.log(container);
     const createNowShowing = /*html*/`<section class="nowShowing"></section>`;
     container.insertAdjacentHTML("beforeend", createNowShowing);
     const nowShowing = container.querySelector(".nowShowing");
@@ -157,7 +156,6 @@ function displayNowShowing(movies) {
 function displayPopular(movies) {
 
     const container = document.querySelector("#container")
-    // console.log(container);
     const createPopular = /*html*/`<section class="popular"></section>`;
     container.insertAdjacentHTML("beforeend", createPopular);
     const popular = container.querySelector(".popular");

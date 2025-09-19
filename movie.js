@@ -37,7 +37,9 @@ const container = document.querySelector("#container")
 
 // MARK: CREATE HEADER
 // variable to use later outside header function
+let officialTrailer;
 let videoPath;
+let videoKey;
 function insertHeader(movie) {
 
     const createHeader = /*html*/`
@@ -93,15 +95,48 @@ function insertHeader(movie) {
 
 
     // MARK: TRAILER
-    // find the official trailer video in array
-    const findTrailer = movie.videos.results.find(trailer => trailer.name == "Official Trailer").key
-    // set the found trailer key in youtube link
-    let video = moviepath = `https://www.youtube.com/watch?v=${findTrailer}`
+    // key to use in youtube link outside this function
+    let key;
+    // loop through video results and find where name is equal to "official trailer"
+    officialTrailer = movie.videos.results.find(result => {
+        return result.name.toLowerCase() === "official trailer";
+    });
+
+    // if exact match is found
+    if (officialTrailer) {
+        // set key to the name found
+        key = officialTrailer.key;
+        // insert key in youtube link to open this when play button is clicked
+        video = `https://www.youtube.com/watch?v=${key}`;
+    }
+    // if exact match is not found
+    else {
+        // find name that includes "official trailer"
+        officialTrailer = movie.videos.results.find(result => {
+            return result.name.toLowerCase().includes("official trailer");
+        });
+
+        // if name includes "official trailer"
+        if (officialTrailer) {
+            // set key to the found name
+            key = officialTrailer.key;
+            // insert key in youtube link to open this when play button is clicked
+            video = `https://www.youtube.com/watch?v=${key}`;
+        }
+        // if no name includes "official trailer"
+        else {
+            // set video string to empty
+            video = "";
+        }
+    }
+
+    // set videoPath and videokey equal to video variable to use outside function
+    videoPath = video;
+    videoKey = key;
+
     // add event listener to play button
-    const playButton = header.querySelector(".trailer")
-    playButton.addEventListener("click", playTrailer)
-    // set videoPath equal to video variable to use outside function
-    videoPath = video
+    const playButton = header.querySelector(".trailer");
+    playButton.addEventListener("click", playTrailer);
 
 }
 
@@ -124,12 +159,12 @@ function toggleDarkLight() {
 // MARK: PLAY TRAILER
 // activate this when play button in header is clicked
 function playTrailer() {
-    // if videoPath exists
-    if(videoPath) {
-        // open new window with youtube trailer
+    // if "Official Trailer" name is found
+    if(officialTrailer) {
+        // open new window with youtube trailer (the videoPath set in header function)
         window.open(`${videoPath}`);
     }
-    // if it does not exist
+    // if it is not found and video variable is empty
     else {
         // pop up alert message
         alert("It looks like we can't find a trailer for this movie");
@@ -140,7 +175,7 @@ function playTrailer() {
 
 // MARK: DISPLAY MOVIE
 function displayMovieDetails(movie) {
-
+    
     const movieTemplate = /*html*/`
         <article>
             <section class="movie">
@@ -206,10 +241,26 @@ function findRating(release_dates) {
 
     // loop through release_dates array and find "US"
     let us_dates = release_dates.results.find(result => result.iso_3166_1 == "US")
-    // loop through new release_dates array inside "US" and find "certification" that is not empty
-    let rating = us_dates.release_dates.find(result => result.certification != "")
-    
-    // return certification value
-    return rating.certification
 
+    // Check if us_dates exists
+    if (us_dates) {
+        // if they exists -
+        // loop through new release_dates array inside "US" and find "certification" that is not empty
+        let rating = us_dates.release_dates.find(result => result.certification != "")
+
+        // if certification is not empty
+        if (rating) {
+            // return certification value
+            return rating.certification
+        }
+        // if certification is empty
+        else {
+            return "Not Available"
+        }
+    }
+    // if us_dates does not exist
+    else {
+        // Handle the case where "US" release dates are not found
+        return "Not Available"
+    }
 }
